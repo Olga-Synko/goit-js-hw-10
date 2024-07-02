@@ -1,125 +1,73 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-
-:root {
-  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
-  
-  font-family: "Montserrat", sans-serif;
-    
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-body>section>h1{
-  position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-}
-
-.container{
-  position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-input{
-width: 138px;
-  height: 24px;
-    border-radius: 4px;
+.flatpickr-input {
+    background: #fff;
     border: 1px solid #808080;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 150%;
-      letter-spacing: 0.04em;
-      color: #2e2f42;
-      padding: 8px 118px 8px 16px;
-      margin-bottom: 32px;
-      
-      
-      
+    border-radius: 4px;
+    width: 272px;
+    height: 40px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+    text-align: center;
+    margin: 16px 0 16px 16px;
+    padding: 0 0 0 16px;
 }
-input:hover{
-  border: 1px solid #000;
+input:hover {
+    border: 1px solid #000;
 }
-input:active{
-  border: 1px solid #4e75ff;
+input:active {
+    border: 1px solid #4e75ff;
+    color: #000;
 }
-input:disabled{
-  
-color: #808080;
-}
-button{
-  border-radius: 8px;
-  border: none;
+button[data-start] {
+    border-radius: 8px;
+    border: none;
     padding: 8px 16px;
     width: 75px;
     height: 40px;
-  background: #4e75ff;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 150%;
-      letter-spacing: 0.04em;
+    background: #4e75ff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
     color: #fff;
-    margin-left: 8px;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-button:disabled{
-  background: #cfcfcf;
-  color: #989898;
+button[data-start]:hover {
+    background: #6c8cff;
 }
-button:hover:not(:disabled){
-  background: #6c8cff;
-  color: #fff;
+button[data-start]:disabled {
+    background-color: #d3d3d3;
 }
-
-.timer{
-  width: 346px;
+.timer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    width: 346px;
     height: 72px;
-    
-  display: flex;
-  justify-content: space-between;
+    margin-left: 16px;
 }
-.field{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
- 
+.field {
+    display: flex;
+    flex-direction: column;
+    height: 72px;
+    align-items: center;
 }
-
-.value{
-  
+.value {
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 40px;
-    line-height: 120%;
+    line-height: 1.2;
     letter-spacing: 0.04em;
     color: #2e2f42;
 }
-.label{
-  
+.label {
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 16px;
-    line-height: 150%;
+    line-height: 1.5;
     color: #2e2f42;
-    text-transform: uppercase;
 }

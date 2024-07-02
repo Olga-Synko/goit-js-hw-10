@@ -1,44 +1,62 @@
-// Описаний у документації
 import iziToast from "izitoast";
-// Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
 
+const form = document.querySelector(".form");
 
+form.addEventListener("submit", checkSubmit)
 
-
-const form = document.querySelector('.form');
-
-form.addEventListener('submit', handlerSubmit);
-
-function handlerSubmit(evt) {
+function checkSubmit(evt) {
     evt.preventDefault();
+    const delay = evt.target.elements.delay;
+    const state = evt.target.elements.state;
+    const enteredNum = delay.value;
+    const choice = state.value;
 
-
-    const delay = parseInt(evt.target.delay.value);
-    const radio = evt.target.state.value;
-
-    const promise = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (radio === "fulfilled") {
-                resolve(delay);
-            } else if (radio === "rejected") {
-                reject(delay);
-            }
-        }, delay);
-    });
-
-    promise
-        .then((delay) => {
-            iziToast.success({
-
-                message: `✅ Fulfilled promise in ${delay}ms`,
-            });
+    makePromise(enteredNum, choice)
+        .then(value => {
+            console.log(value);
         })
-        .catch((delay) => {
-            iziToast.error({
-
-                message: `❌ Rejected promise in ${delay}ms`,
-            });
-        })
-
+        .catch(error => {
+            console.log(error);
+        });
+    form.reset();
 }
+
+function makePromise(enteredNum, choice) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (choice === "fulfilled") {
+                resolve(iziToast.show({
+                    ...optionsFulfilled,
+                    message: `Fulfilled promise in ${enteredNum}ms`,
+                }))
+            } else {
+                reject(iziToast.show({
+                    ...optionsRejected,
+                    message: `Rejected promise in ${enteredNum}ms`,
+                }))
+            }
+        }, enteredNum);
+    });
+};
+
+const optionsFulfilled = {
+    title: '✔',
+    titleColor: 'rgba(134, 253, 7, 1)',
+    titleSize: '24px',
+    messageColor: '#FFFFFF',
+    messageSize: '16px',
+    backgroundColor: 'rgba(89, 161, 13, 1)',
+    timeout: 4000,
+    position: 'topCenter',
+};
+const optionsRejected = {
+    title: '✖',
+    titleColor: 'rgba(255, 190, 190, 1)',
+    titleSize: '24px',
+    messageColor: '#FFFFFF',
+    messageSize: '16px',
+    backgroundColor: 'rgba(239, 64, 64, 1)',
+    timeout: 4000,
+    position: 'topCenter',
+};
